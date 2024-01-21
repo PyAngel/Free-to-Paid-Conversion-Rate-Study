@@ -18,9 +18,11 @@ GROUP BY
 HAVING 
     se.student_id IS NOT NULL AND (date_diff_watch_purch >= 0 OR date_diff_watch_purch IS NULL))
 
-SELECT (SELECT COUNT(first_date_watched) FROM T1 WHERE first_date_purchased IS NOT NULL)/COUNT(first_date_watched) AS Conversion_rate,
-		AVG(date_diff_reg_watch) as av_reg_watch,
-        AVG(date_diff_watch_purch) as av_watch_purch
-FROM T1 
+SELECT 
+	(SELECT COUNT(first_date_watched) FROM T1 WHERE first_date_purchased IS NOT NULL)/COUNT(first_date_watched) AS Conversion_rate,
+	AVG(date_diff_reg_watch) as av_reg_watch,
+	AVG(date_diff_watch_purch) as av_watch_purch
+FROM 
+	T1 
 
 
